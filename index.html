@@ -5,18 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task management Board</title>
+    <title>Task management Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="flex flex-col">
-  <h1 id="head" class=" flex justify-center items-center text-3xl md:text-3xl lg:text-5xl 
+<body class="bg-gray-400">
+    <div class="flex flex-col bg-white rounded-lg mt-6 max-w-md mx-auto w-full shadow">
+  <h1 id="head" class=" flex justify-center items-center text-3xl  py-5
   text-purple-900 font-bold sans pb-5">Task Management Dashboard</h1> 
-  <form id="form" class=" space-y-6 min-h-screen w-full shadow-lg p-5 ">
+  <form id="form" class=" space-y-6 w-full shadow-lg p-5 ">
     <input  id="taskName"  type="text"  placeholder="Task name" class="border-2 rounded w-full p-2">
     <label for="dueDate">Due Date </label>
-    <input  id="dueDate"  type="date" class=" border-2 p-2 w-full">
-    <button id="taskBtn" type="submit" class=" border-2 w-1/2 md:1/3 p-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white">Add Task</button>
+    <input  id="taskName"  type="date" class=" border-2 p-2 w-full">
+    <button id="taskBtn" type="submit" class=" border-2 w-full  p-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white">Add Task</button>
   </form>
   <ul id="taskList" class="max-w-xl mx-auto space-y-6"></ul>
   </div>

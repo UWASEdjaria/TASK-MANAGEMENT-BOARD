@@ -30,7 +30,7 @@ function renderTasks() {
 
         // Buttons container
         const btns = document.createElement("div");
-        btns.className="flex gap-2";
+        btns.className="flex gap-2"
 
         // Toggle status
         const statusBtn = document.createElement("button");

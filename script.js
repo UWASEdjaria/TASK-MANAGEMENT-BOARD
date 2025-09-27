@@ -12,7 +12,8 @@ form.addEventListener('submit',
      if(taskNameInput.value.trim()===""){
         alert("Task Name is required");
     return;
-     }
+     }  
+
  const taskList=document.getElementById("taskList") ;  
  const li=document.createElement("li");
  li.textContent=taskNameInput.value + "-" + dueDateInput.value;
@@ -20,4 +21,14 @@ form.addEventListener('submit',
 
  taskNameInput.value="";
  dueDateInput.value="";
+
+const deleteTaskBtn=document.createElement("button");
+ deleteTaskBtn.style.backgroundColor="red";
+ deleteTaskBtn.style.border="p-2,rounded-lg";
+ deleteTaskBtn.textContent="delete";
+ li.appendChild(deleteTaskBtn);
+
+deleteTaskBtn.addEventListener('click',function(){
+ taskList.removeChild(li);
+});
 });

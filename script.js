@@ -71,13 +71,8 @@ const newTask={
 task.push(newTask);
 renderTasks();
 
- const taskList=document.getElementById("taskList") ;  
- const li=document.createElement("li");
- li.textContent=taskNameInput.value + "-" + dueDateInput.value;
- taskList.appendChild(li);
-
  taskNameInput.value="";
  dueDateInput.value="";
 
-
 });
+renderTask();

@@ -18,9 +18,8 @@ function renderTask(){
     task.forEach(task=>{
 const li=document.createElement("li");
 li.textContent=task.name +"-"+task.due + task.status;
-    })
-}
-
+  
+//Status button
 const statusBtn=document.createElement("button");
 statusBtn.textContent="Toggle status";
 statusBtn.style.marginLeft="10px";
@@ -28,7 +27,33 @@ statusBtn.addEventListener('click',()=>{
     task.status=task.status==="pending"?"completed":"pending";
     renderTask();
 });
+//Edit button
+const editBtn=document.createElement("button");
+editBtn.textContent="Edit";
+editBtn.style.marginLeft = "10px";
+editBtn.addEventListener("click", () => {
+const newName = prompt("Edit task name:", task.name);
+const newDue = prompt("Edit due date (YYYY-MM-DD):", task.due);
+if (newName) task.name = newName;
+if (newDue) task.due = newDue;
+ renderTasks();
+ });
+//delete button
+const deleteTaskBtn=document.createElement("button");
+deleteTaskBtn.textContent="Delete";
+deleteBtn.style.marginLeft = "10px";
+deleteTaskBtn.style.backgroundColor="red";
+deleteTaskBtn.addEventListener('click',()=>{
+    task=task.filter(t=>t.id !== task.id);
+    renderTask();
+});
+//append button
+li.appendChild(statusBtn);
+li.appendChild(editBtn);
+li.appendChild(deleteBtn);
+task.appendChild(li);
 
+  })};
 form.addEventListener('submit',
     function(e){
      e.preventDefault();
@@ -46,12 +71,5 @@ form.addEventListener('submit',
  taskNameInput.value="";
  dueDateInput.value="";
 
-const deleteTaskBtn=document.createElement("button");
- deleteTaskBtn.style.backgroundColor="red";
- deleteTaskBtn.textContent="delete";
- li.appendChild(deleteTaskBtn);
 
-deleteTaskBtn.addEventListener('click',function(){
- taskList.removeChild(li);
-});
 });

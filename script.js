@@ -62,6 +62,14 @@ form.addEventListener('submit',
         alert("Task Name is required");
     return;
      }  
+const newTask={
+    id:Date.now(),
+    name:taskNameInput.value,
+    due:dueDateInput.value|| "No Date",
+    status:"pending"
+};
+task.push(newTask);
+renderTasks();
 
  const taskList=document.getElementById("taskList") ;  
  const li=document.createElement("li");

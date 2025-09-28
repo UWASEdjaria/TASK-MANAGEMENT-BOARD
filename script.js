@@ -35,7 +35,7 @@ function renderTasks() {
         // Toggle status
         const statusBtn = document.createElement("button");
         statusBtn.textContent = task.status==="pending"?"Mark Done":"Undo";
-        statusBtn.className = "ml-2 px-2 py-1 bg-green-500 text-white rounded";
+        statusBtn.className = "ml-2 px-2 py-1 bg-green-500 text-white rounded hover:bg-green-700";
         statusBtn.addEventListener("click", () => {
             task.status = task.status==="pending"?"completed":"pending";
             renderTasks();
@@ -45,7 +45,7 @@ function renderTasks() {
         // Edit button
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
-        editBtn.className = "ml-2 px-2 py-1 bg-yellow-500 text-white rounded";
+        editBtn.className = "ml-2 px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-700";
         editBtn.addEventListener("click", () => {
             const newName = prompt("Edit task name:", task.name);
             const newDue = prompt("Edit due date (YYYY-MM-DD):", task.due);
@@ -58,7 +58,7 @@ function renderTasks() {
         // Delete button
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
-        deleteBtn.className = "ml-2 px-2 py-1 bg-red-500 text-white rounded";
+        deleteBtn.className = "ml-2 px-2 py-1 bg-red-500 text-white rounded hover-red-700";
         deleteBtn.addEventListener("click", () => {
             tasks = tasks.filter(t => t.id !== task.id);
             renderTasks();

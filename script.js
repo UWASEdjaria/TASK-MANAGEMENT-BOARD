@@ -60,6 +60,7 @@ function renderTasks() {
         deleteBtn.textContent = "Delete";
         deleteBtn.className = "ml-2 px-2 py-1 bg-red-500 text-white rounded hover-red-700";
         deleteBtn.addEventListener("click", () => {
+        deleteBtn=confirm("Do you want to delete this task?") ? alert("Task deleted!") : alert("Task not deleted!");
             tasks = tasks.filter(t => t.id !== task.id);
             renderTasks();
         });

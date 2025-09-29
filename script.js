@@ -5,6 +5,12 @@ let tasks = [
     {id:4, name:"Attend wedding", due:"2025-10-01", status:"pending"},
     {id:5, name:"Attend class", due:"2025-10-01", status:"pending"}
 ];
+let lastId = 5;
+
+function addId() {
+    lastId++;
+    return lastId;
+}
 
 const head = document.getElementById("head");
 const form = document.getElementById("form");
@@ -81,7 +87,7 @@ form.addEventListener("submit", function(e){
     }
 
     const newTask = {
-        id: Date.now(),
+        id: addId(),
         name: taskNameInput.value,
         due: dueDateInput.value || "No Date",
         status: "pending"

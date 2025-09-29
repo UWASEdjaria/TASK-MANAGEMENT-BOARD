@@ -6,6 +6,13 @@ let tasks = [
     {id:5, name:"Attend class", due:"2025-10-01", status:"pending"}
 ];
 
+let lastId = 5;
+
+function addId() {
+    lastId++;
+    return lastId;
+}
+
 const head = document.getElementById("head");
 const form = document.getElementById("form");
 const taskNameInput = document.getElementById("taskName");
@@ -32,7 +39,7 @@ function renderTasks() {
         const btns = document.createElement("div");
         btns.className="flex gap-2"
 
-        // Toggle status
+        // Toggle status:switch
         const statusBtn = document.createElement("button");
         statusBtn.textContent = task.status==="pending"?"Mark Done":"Undo";
         statusBtn.className = "ml-2 px-2 py-1 bg-green-500 text-white rounded hover:bg-green-700 ";
@@ -60,7 +67,7 @@ function renderTasks() {
         deleteBtn.textContent = "Delete";
         deleteBtn.className = "ml-2 px-2 py-1 bg-red-500 text-white rounded hover:bg-red-700";
         deleteBtn.addEventListener("click", () => {
-        deleteBtn=confirm("Do you want to delete this task?") ? alert("Task deleted!") : alert("Task not deleted!");
+       
             tasks = tasks.filter(t => t.id !== task.id);
             renderTasks();
         });
@@ -81,11 +88,11 @@ form.addEventListener("submit", function(e){
     }
 
     const newTask = {
-        id: Date.now(),
+        id: addId(),
         name: taskNameInput.value,
         due: dueDateInput.value || "No Date",
         status: "pending"
-    };
+};
 
     tasks.push(newTask);
     renderTasks();

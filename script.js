@@ -27,24 +27,24 @@ function showTasks(filter="all") {
          .forEach(task =>{
 
         const li = document.createElement("li");
-        li.className = "flex justify-between items-center border border-none p-2 rounded-xl shadow-lg bg-white  mb-2";
+        li.className = "flex justify-between items-center border border-none p-2 rounded-xl shadow-lg bg-gray-900 text-white mb-2";
 
         // Task text
         const taskText = document.createElement("span");
         taskText.textContent = `${task.name} - ${task.due} [${task.status}]`;
         if(task.status === "completed") {
-            taskText.classList.add("line-through", "text-green-600");
+            taskText.classList.add("line-through", "text-yellow-600");
         }
         li.appendChild(taskText);
 
         // Buttons container
         const btns = document.createElement("div");
-        btns.className="flex flex-col sm:flex-row gap-2 font-semibold transtion-transform hover:scale-105"
+        btns.className="flex flex-col sm:flex-row gap-2  font-semibold transtion-transform hover:scale-105"
 
         // Toggle status:switch
         const statusBtn = document.createElement("button");
         statusBtn.textContent = task.status==="pending"?"Mark Done":"Undo";
-        statusBtn.className = "ml-2 p-2 bg-green-500 text-white rounded-lg hover:bg-green-700 ";
+        statusBtn.className = "ml-2 p-2 bg-yellow-800 text-white rounded-lg hover:bg-yellow-600 ";
         statusBtn.addEventListener("click", () => {
             task.status = task.status==="pending"?"completed":"pending";
             showTasks(filter);
@@ -54,7 +54,7 @@ function showTasks(filter="all") {
         // Edit button
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
-        editBtn.className = "ml-2 p-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-700";
+        editBtn.className = "ml-2 p-2 bg-yellow-800 text-white rounded-lg hover:bg-yellow-600";
         editBtn.addEventListener("click", () => {
             const newName = prompt("Edit task name:", task.name);
             const newDue = prompt("Edit due date (YYYY-MM-DD):", task.due);
@@ -67,7 +67,7 @@ function showTasks(filter="all") {
         // Delete button
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
-        deleteBtn.className = "ml-2 p-2 bg-red-500 text-white rounded-lg hover:bg-red-700";
+        deleteBtn.className = "ml-2 p-2 bg-red-900 text-white rounded-lg hover:bg-red-700";
         deleteBtn.addEventListener("click", () => {
        
             tasks = tasks.filter(t => t.id !== task.id);
@@ -102,5 +102,4 @@ form.addEventListener("submit", function(e){
     taskNameInput.value = "";
     dueDateInput.value = "";
 });
-
 

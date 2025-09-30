@@ -8,18 +8,23 @@
     <title>Task management Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-400">
-    <div class="flex flex-col bg-white rounded-lg mt-6 max-w-md mx-auto w-full shadow">
-  <h1 id="head" class=" flex justify-center items-center text-3xl  py-5
-  text-purple-900 font-bold sans pb-5">Task Management Dashboard</h1> 
-  <form id="form" class=" space-y-6 w-full shadow-lg p-5 ">
-    <input  id="taskName"  type="text"  placeholder="Task name" class="border-2 rounded w-full p-2">
-    <label for="dueDate">Due Date </label>
-    <input  id="dueDate"  type="date" class=" border-2 p-2 w-full">
-    <button id="taskBtn" type="submit" class=" border-2 w-full  p-2 rounded-lg bg-blue-600 hover:bg-blue-700  text-white">Add Task</button>
-  </form>
-  <ul id="taskList" class="max-w-xl mx-auto space-y-6"></ul>
+<body class="bg-purple-300">
+  <h1 id="head" class=" text-center text-xl sm:text-2xl md:text-3xl m-5 text-purple-800 font-bold underline ">Task Management Dashboard</h1> 
+   <!-- Tabs -->
+  <div class="flex  flex-col sm:flex-row justify-center items-center gap-5 mt-4">
+    <button onclick="showTasks('all')" class="px-4 py-2 bg-purple-700 text-white rounded-lg">All</button>
+    <button onclick="showTasks('pending')" class="px-4 py-2 bg-yellow-500 text-white rounded-lg">Pending</button>
+    <button onclick="showTasks('completed')" class="px-4 py-2 bg-green-600 text-white rounded-lg">Completed</button>
   </div>
+    <div class="flex flex-col sm:flex-row  bg-pink-200 rounded-lg mt-6 max-w-md mx-auto w-full shadow-lg">
+  <form id="form" class=" space-y-6 w-full  p-5 mb-5">
+    <input  id="taskName"  type="text"  placeholder="Task name" class="border-2 border-none rounded-xl shadow-lg w-full p-2">
+    <label for="dueDate">Due Date </label>
+    <input  id="dueDate"  type="date" class=" border-2 p-2 w-full  rounded-xl shadow-lg">
+    <button id="taskBtn" type="submit" class=" border-2 w-full  p-2 rounded-xl shadow-lg bg-purple-700 hover:bg-purple-800  text-white">Add Task</button>
+  </form>
+  </div>
+  <ul id="taskList" class="max-w-md sm:w-3/4 md:w-1/2 mx-auto border-b-2 border-gray-400 my-4 space-y-6"></ul>
   <script src="script.js"></script>
 </body>
 </html>

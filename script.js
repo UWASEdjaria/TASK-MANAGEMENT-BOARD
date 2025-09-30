@@ -5,6 +5,7 @@ let tasks = [
     {id:4, name:"Attend wedding", due:"2025-10-01", status:"pending"},
     {id:5, name:"Attend class", due:"2025-10-01", status:"pending"}
 ];
+
 let lastId = 5;
 
 function addId() {
@@ -19,12 +20,14 @@ const dueDateInput = document.getElementById("dueDate");
 const taskList = document.getElementById("taskList");
 
 // Function to render all tasks
-function renderTasks() {
+function showTasks(filter="all") {
     taskList.innerHTML = "";
 
-    tasks.forEach(task => {
+    tasks.filter(t=>filter ==="all" || t.status===filter)
+         .forEach(task =>{
+
         const li = document.createElement("li");
-        li.className = "flex justify-between items-center border p-2 rounded mb-2";
+        li.className = "flex justify-between items-center border border-none p-2 rounded-xl shadow-lg bg-white  mb-2";
 
         // Task text
         const taskText = document.createElement("span");
@@ -36,39 +39,39 @@ function renderTasks() {
 
         // Buttons container
         const btns = document.createElement("div");
-        btns.className="flex gap-2"
+        btns.className="flex flex-col sm:flex-row gap-2 font-semibold transtion-transform hover:scale-105"
 
-        // Toggle status
+        // Toggle status:switch
         const statusBtn = document.createElement("button");
         statusBtn.textContent = task.status==="pending"?"Mark Done":"Undo";
-        statusBtn.className = "ml-2 px-2 py-1 bg-green-500 text-white rounded hover:bg-green-700";
+        statusBtn.className = "ml-2 p-2 bg-green-500 text-white rounded-lg hover:bg-green-700 ";
         statusBtn.addEventListener("click", () => {
             task.status = task.status==="pending"?"completed":"pending";
-            renderTasks();
+            showTasks(filter);
         });
         btns.appendChild(statusBtn);
 
         // Edit button
         const editBtn = document.createElement("button");
         editBtn.textContent = "Edit";
-        editBtn.className = "ml-2 px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-700";
+        editBtn.className = "ml-2 p-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-700";
         editBtn.addEventListener("click", () => {
             const newName = prompt("Edit task name:", task.name);
             const newDue = prompt("Edit due date (YYYY-MM-DD):", task.due);
             if(newName) task.name = newName;
             if(newDue) task.due = newDue;
-            renderTasks();
+            showTasks();
         });
         btns.appendChild(editBtn);
 
         // Delete button
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
-        deleteBtn.className = "ml-2 px-2 py-1 bg-red-500 text-white rounded hover-red-700";
+        deleteBtn.className = "ml-2 p-2 bg-red-500 text-white rounded-lg hover:bg-red-700";
         deleteBtn.addEventListener("click", () => {
-
+       
             tasks = tasks.filter(t => t.id !== task.id);
-            renderTasks();
+            showTasks(filter);
         });
         btns.appendChild(deleteBtn);
 
@@ -91,14 +94,13 @@ form.addEventListener("submit", function(e){
         name: taskNameInput.value,
         due: dueDateInput.value || "No Date",
         status: "pending"
-    };
+};
 
     tasks.push(newTask);
-    renderTasks();
+    showTasks();
 
     taskNameInput.value = "";
     dueDateInput.value = "";
 });
 
-// Initial render
-renderTasks();
+

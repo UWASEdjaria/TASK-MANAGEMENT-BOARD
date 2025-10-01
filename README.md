@@ -57,4 +57,8 @@ Do not use it for business or commercial purposes.
 # Projected by
  UWASEdjaria
 
+<<<<<<< HEAD
  
+=======
+ 
+>>>>>>> e787e29e8d549aba2f81130f30b5d8f689f9484b

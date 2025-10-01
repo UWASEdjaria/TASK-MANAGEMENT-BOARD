@@ -43,8 +43,8 @@ function showTasks(filter="all") {
 
         // Toggle status:switch
         const statusBtn = document.createElement("button");
-        statusBtn.textContent = task.status==="pending"?"✅":"🔙";
-        statusBtn.className = "ml-2  text-white ";
+        statusBtn.textContent = task.status==="pending"?"Mark Done":"Undo";
+        statusBtn.className = "ml-2 p-2 bg-yellow-800 text-white rounded-lg hover:bg-yellow-600 ";
         statusBtn.addEventListener("click", () => {
             task.status = task.status==="pending"?"completed":"pending";
             showTasks(filter);
@@ -53,8 +53,8 @@ function showTasks(filter="all") {
 
         // Edit button
         const editBtn = document.createElement("button");
-        editBtn.textContent = "✏️";
-        editBtn.className = "ml-2  text-white";
+        editBtn.textContent = "Edit";
+        editBtn.className = "ml-2 p-2 bg-yellow-800 text-white rounded-lg hover:bg-yellow-600";
         editBtn.addEventListener("click", () => {
             const newName = prompt("Edit task name:", task.name);
             const newDue = prompt("Edit due date (YYYY-MM-DD):", task.due);
@@ -66,8 +66,8 @@ function showTasks(filter="all") {
 
         // Delete button
         const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "❌";
-        deleteBtn.className = "ml-2 text-white";
+        deleteBtn.textContent = "Delete";
+        deleteBtn.className = "ml-2 p-2 bg-red-900 text-white rounded-lg hover:bg-red-700";
         deleteBtn.addEventListener("click", () => {
        
             tasks = tasks.filter(t => t.id !== task.id);

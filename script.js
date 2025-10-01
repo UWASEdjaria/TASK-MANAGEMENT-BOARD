@@ -27,7 +27,7 @@ function showTasks(filter="all") {
          .forEach(task =>{
 
         const li = document.createElement("li");
-        li.className = "flex justify-between items-center border border-none p-2 rounded-xl shadow-lg bg-gray-900 text-white mb-2";
+        li.className = "flex justify-between items-center border border-none p-2 rounded-xl shadow-lg bg-gray-900 text-white mb-2 transition-transform duration-300 hover:scale-105";
 
         // Task text
         const taskText = document.createElement("span");
@@ -43,8 +43,8 @@ function showTasks(filter="all") {
 
         // Toggle status:switch
         const statusBtn = document.createElement("button");
-        statusBtn.textContent = task.status==="pending"?"Mark Done":"Undo";
-        statusBtn.className = "ml-2 p-2 bg-yellow-800 text-white rounded-lg hover:bg-yellow-600 ";
+        statusBtn.textContent = task.status==="pending"?"✅":"↩️";
+        statusBtn.className = "ml-2 p-2 transition-transform duration-300 hover:scale-105";
         statusBtn.addEventListener("click", () => {
             task.status = task.status==="pending"?"completed":"pending";
             showTasks(filter);
@@ -53,8 +53,7 @@ function showTasks(filter="all") {
 
         // Edit button
         const editBtn = document.createElement("button");
-        editBtn.textContent = "Edit";
-        editBtn.className = "ml-2 p-2 bg-yellow-800 text-white rounded-lg hover:bg-yellow-600";
+        editBtn.textContent = "✏️";
         editBtn.addEventListener("click", () => {
             const newName = prompt("Edit task name:", task.name);
             const newDue = prompt("Edit due date (YYYY-MM-DD):", task.due);
@@ -66,8 +65,7 @@ function showTasks(filter="all") {
 
         // Delete button
         const deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete";
-        deleteBtn.className = "ml-2 p-2 bg-red-900 text-white rounded-lg hover:bg-red-700";
+        deleteBtn.textContent = "❌";
         deleteBtn.addEventListener("click", () => {
        
             tasks = tasks.filter(t => t.id !== task.id);
